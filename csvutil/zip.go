@@ -1,14 +1,16 @@
-package sheet
+package csvutil
 
 import (
 	"archive/zip"
 	"fmt"
+
+	"github.com/exaream/go-snippet/fileutil"
 )
 
 const zipExt = ".zip"
 
-func WalkCSVInZip(target string) (rerr error) {
-	if ext := fileExt(target); ext != zipExt {
+func WalkInZip(target string) (rerr error) {
+	if ext := fileutil.Ext(target); ext != zipExt {
 		return fmt.Errorf("invalid file extension: %s", ext)
 	}
 
@@ -24,11 +26,11 @@ func WalkCSVInZip(target string) (rerr error) {
 	}()
 
 	for _, f := range z.File {
-		if fileExt(f.Name) != csvExt {
+		if fileutil.Ext(f.Name) != csvExt {
 			continue
 		}
 
-		if err := readCSVInZip(f); err != nil {
+		if err := readInZip(f); err != nil {
 			return err
 		}
 	}
@@ -36,7 +38,7 @@ func WalkCSVInZip(target string) (rerr error) {
 	return err
 }
 
-func readCSVInZip(zf *zip.File) (rerr error) {
+func readInZip(zf *zip.File) (rerr error) {
 	f, err := zf.Open()
 	if err != nil {
 		return err
@@ -48,5 +50,5 @@ func readCSVInZip(zf *zip.File) (rerr error) {
 		}
 	}()
 
-	return readCSV(f)
+	return read(f)
 }
