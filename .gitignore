@@ -15,4 +15,4 @@
 # vendor/
 
 testdata
-!testdata/.gitkeep
+!.gitkeep
