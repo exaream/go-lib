@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"path/filepath"
 
 	"github.com/exaream/go-snippet/csvutil"
 	"github.com/exaream/go-snippet/fileutil"
@@ -15,7 +16,7 @@ type Country struct {
 }
 
 func main() {
-	target := "country.csv"
+	target := filepath.Join("..", "..", "testdata", "country.csv")
 	countries := []Country{
 		{Name: "中国", ISOCode: "CN/CHN", Population: 1444200000},
 		{Name: "インド", ISOCode: "IN/IND", Population: 1393400000},
