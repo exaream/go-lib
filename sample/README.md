@@ -11,7 +11,7 @@ $ unzip testdata/47okinaw.zip -d testdata
 
 ## Run
 ```shell
-$ cd go-snippet/sample/cmd/ws
+$ cd go-snippet/sample/cmd/sheet
 $ go run main.go
 ```
 
@@ -30,3 +30,4 @@ sample
 
 ## TODO
 - [x] Workspace
+- [ ] Comment

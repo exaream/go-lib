@@ -1,4 +1,4 @@
-module github.com/exaream/go-snippet/gocsv
+module github.com/exaream/go-snippet/sheet
 
 go 1.18
 
