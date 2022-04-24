@@ -30,7 +30,7 @@ func ReadCSV(target string) (rerr error) {
 		}
 	}()
 
-	if ext(f.Name()) != csvExt {
+	if fileExt(f.Name()) != csvExt {
 		return fmt.Errorf("%s is not a CSV file", f.Name())
 	}
 
