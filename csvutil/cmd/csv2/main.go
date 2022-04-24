@@ -31,9 +31,15 @@ func main() {
 		}
 	}
 
-	records := make([]Country, cap(countries))
+	// TODO: Check the difference with and without *
+	records := make([]*Country, cap(countries))
 	if err := csvutil.ReadStructured(target, records); err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
+
+	// TODO: Remove the following
+	// for _, c := range countries {
+	// 	fmt.Println(c.Name)
+	// }
 }
