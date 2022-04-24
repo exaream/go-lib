@@ -1,4 +1,4 @@
-package sheet
+package csvutil
 
 import (
 	"encoding/csv"
@@ -7,9 +7,8 @@ import (
 	"io"
 	"os"
 	"path"
-	"path/filepath"
-	"strings"
 
+	"github.com/exaream/go-snippet/fileutil"
 	"golang.org/x/text/encoding/japanese"
 	"golang.org/x/text/transform"
 )
@@ -18,7 +17,7 @@ const csvExt = ".csv"
 
 type reader io.Reader
 
-func ReadCSV(target string) (rerr error) {
+func Read(target string) (rerr error) {
 	f, err := os.Open(path.Clean(target))
 	if err != nil {
 		return err
@@ -30,18 +29,14 @@ func ReadCSV(target string) (rerr error) {
 		}
 	}()
 
-	if fileExt(f.Name()) != csvExt {
+	if fileutil.Ext(f.Name()) != csvExt {
 		return fmt.Errorf("%s is not a CSV file", f.Name())
 	}
 
-	return readCSV(f)
+	return read(f)
 }
 
-func fileExt(filePath string) string {
-	return strings.ToLower(filepath.Ext(filePath))
-}
-
-func readCSV(r reader) error {
+func read(r reader) error {
 	cr := csv.NewReader(transform.NewReader(r, japanese.ShiftJIS.NewDecoder()))
 
 	for {

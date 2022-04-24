@@ -5,12 +5,12 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/exaream/go-snippet/sheet"
+	"github.com/exaream/go-snippet/csvutil"
 )
 
 func main() {
 	file := filepath.Join("..", "..", "testdata", "47OKINAW.CSV")
-	if err := sheet.ReadCSV(file); err != nil {
+	if err := csvutil.Read(file); err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}

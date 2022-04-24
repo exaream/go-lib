@@ -11,7 +11,7 @@ $ unzip testdata/47okinaw.zip -d testdata
 
 ## Run
 ```shell
-$ cd go-snippet/sample/cmd/sheet
+$ cd go-snippet/sample/cmd/csvutil
 $ go run main.go
 ```
 
@@ -19,7 +19,7 @@ $ go run main.go
 sample
 ├── README.md
 ├── cmd
-│   └── sample
+│   └── csvutil
 │       └── main.go
 ├── go.mod
 └── testdata
