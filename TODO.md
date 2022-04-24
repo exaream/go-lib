@@ -1,9 +1,10 @@
 ## TODO
 - [x] Workspace https://zenn.dev/kimuson13/articles/go-workspace-mode-impressions
-- [ ] CSV https://zenn.dev/mattn/articles/fd545a14b0ffdf
+- [x] CSV https://zenn.dev/mattn/articles/fd545a14b0ffdf
 - [ ] Excel
 - [ ] SQL
 - [ ] Time https://zenn.dev/hsaki/articles/go-time-cheatsheet
+- [x] Fuzzing
 - [ ] Error handling https://zenn.dev/spiegel/books/error-handling-in-golang/viewer/error-logging
 - [ ] Structured log
 - [ ] Image converter https://github.com/tenntenn/imgconv/blob/main/imgconv.go
