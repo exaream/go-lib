@@ -8,6 +8,7 @@ $ curl https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip -o testda
 $ unzip testdata/ken_all.zip -d testdata
 ```
 
+## Run
 ```shell
 $ cd go-snippet/gocsv/cmd/gocsv
 $ go run main.go
