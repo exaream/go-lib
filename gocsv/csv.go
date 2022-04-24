@@ -38,7 +38,7 @@ func Read(target string) (rerr error) {
 	return read(f)
 }
 
-func read(r reader) (rerr error) {
+func read(r reader) error {
 	cr := csv.NewReader(transform.NewReader(r, japanese.ShiftJIS.NewDecoder()))
 
 	for {
@@ -55,7 +55,7 @@ func read(r reader) (rerr error) {
 		fmt.Println(record)
 	}
 
-	return rerr
+	return nil
 }
 
 func WalkInZip(target string) (rerr error) {
@@ -83,14 +83,16 @@ func WalkInZip(target string) (rerr error) {
 	return err
 }
 
-func readInZip(zf *zip.File) error {
+func readInZip(zf *zip.File) (rerr error) {
 	f, err := zf.Open()
 	if err != nil {
 		return err
 	}
 
 	defer func() {
-		err = f.Close()
+		if err = f.Close(); rerr == nil && err != nil {
+			rerr = err
+		}
 	}()
 
 	return read(f)
