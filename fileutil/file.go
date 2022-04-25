@@ -15,11 +15,11 @@ func Exist(target string) bool {
 }
 
 // Ext returns an extension of a file.
-func Ext(filePath string) string {
-	return strings.ToLower(filepath.Ext(filePath))
+func Ext(file string) string {
+	return strings.ToLower(filepath.Ext(file))
 }
 
-// Stem returns a file's stem (a file name without the extension.) by a path
+// Stem returns a stem that is a file name without the extension.
 func Stem(file string) string {
 	base := filepath.Base(file)
 	ext := filepath.Ext(base)

@@ -1,4 +1,3 @@
-// https://docs.w3cub.com/http/basics_of_http/mime_types/complete_list_of_mime_types.html
 package fileutil
 
 import (
@@ -8,13 +7,13 @@ import (
 	"strings"
 )
 
-// MimeType returns MimeType by a file name.
+// MimeType returns Mime type by a file name.
 func MimeType(file string) string {
 	ext := filepath.Ext(file)
 	return MimeTypeByExt(ext)
 }
 
-// MimeType returns MimeType by an extension.
+// MimeTypeByExt returns Mime type by an extension.
 func MimeTypeByExt(ext string) string {
 	if strings.HasPrefix(ext, ".") {
 		ext = strings.TrimLeft(ext, ".")
