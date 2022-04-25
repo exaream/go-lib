@@ -5,6 +5,9 @@
 - [ ] SQL
 - [ ] Time https://zenn.dev/hsaki/articles/go-time-cheatsheet
 - [x] Fuzzing
+- [ ] Generics
+  - [ ] https://zenn.dev/nobishii/articles/type_param_intro
+  - [ ] https://zenn.dev/nobishii/articles/type_param_intro_2
 - [ ] Error handling https://zenn.dev/spiegel/books/error-handling-in-golang/viewer/error-logging
 - [ ] Structured log
 - [ ] Image converter https://github.com/tenntenn/imgconv/blob/main/imgconv.go
