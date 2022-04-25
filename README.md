@@ -1,2 +1,2 @@
-# go-snippet
+# Go Library
 
