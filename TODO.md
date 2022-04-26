@@ -1,6 +1,8 @@
 ## TODO
 - [x] Workspace https://zenn.dev/kimuson13/articles/go-workspace-mode-impressions
 - [x] CSV https://zenn.dev/mattn/articles/fd545a14b0ffdf
+- [ ] File
+  - [ ] MIME type https://github.com/gabriel-vasile/mimetype
 - [ ] Excel
 - [ ] SQL
 - [ ] Time https://zenn.dev/hsaki/articles/go-time-cheatsheet
