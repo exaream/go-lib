@@ -7,9 +7,9 @@ import (
 	"golang.org/x/exp/slices"
 )
 
-const nullbyte = string(rune(0)) // or "\x00"
+const nullbyte = string(rune(0)) // "\x00"
 
-// Contains reports whether nullbyte is within s.
+// ContainsNullByte reports whether nullbyte is within s.
 func ContainsNullByte(a any) (result bool, ok bool) {
 	switch v := a.(type) {
 	case string:
