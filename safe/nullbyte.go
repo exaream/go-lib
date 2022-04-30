@@ -9,7 +9,7 @@ import (
 
 const nullbyte = string(rune(0)) // "\x00"
 
-// ContainsNullByte reports whether nullbyte is within s.
+// ContainsNullByte reports whether nullbyte is within a.
 func ContainsNullByte(a any) (result bool, ok bool) {
 	switch v := a.(type) {
 	case string:
