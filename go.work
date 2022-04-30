@@ -4,6 +4,6 @@ use (
 	./csvutil
 	./fileutil
 	./fuzz
-	./safe/nullbyte
+	./nullbyte
 	./sample
 )
