@@ -5,7 +5,7 @@ import (
 
 	"github.com/google/go-cmp/cmp"
 
-	"github.com/exaream/go-lib/safe/nullbyte"
+	"nullbyte"
 )
 
 const (
@@ -96,7 +96,7 @@ func TestContainsInOther(t *testing.T) {
 	}
 }
 
-func TestTrimNullByteFromStr(t *testing.T) {
+func TestTrimFromStr(t *testing.T) {
 	t.Parallel()
 
 	cases := map[string]struct {
@@ -115,7 +115,7 @@ func TestTrimNullByteFromStr(t *testing.T) {
 		t.Run(name, func(t *testing.T) {
 			t.Parallel()
 
-			got, gotOK := nullbyte.TrimNullByte(tt.in)
+			got, gotOK := nullbyte.Trim(tt.in)
 			if tt.want != got || tt.wantOK != gotOK {
 				t.Errorf("in=%s, want=%s, wantOK=%t, got=%s, gotOK=%t", tt.in, tt.want, tt.wantOK, got, gotOK)
 			}
@@ -123,7 +123,7 @@ func TestTrimNullByteFromStr(t *testing.T) {
 	}
 }
 
-func TestTrimNullByteFromBytes(t *testing.T) {
+func TestTrimFromByte(t *testing.T) {
 	t.Parallel()
 
 	cases := map[string]struct {
@@ -142,7 +142,7 @@ func TestTrimNullByteFromBytes(t *testing.T) {
 		t.Run(name, func(t *testing.T) {
 			t.Parallel()
 
-			got, gotOK := nullbyte.TrimNullByte(tt.in)
+			got, gotOK := nullbyte.Trim(tt.in)
 			if !cmp.Equal(tt.want, got) || tt.wantOK != gotOK {
 				t.Errorf("in=%v, want=%v, wantOK=%t, got=%v, gotOK=%t", tt.in, tt.want, tt.wantOK, got, gotOK)
 			}
@@ -150,7 +150,7 @@ func TestTrimNullByteFromBytes(t *testing.T) {
 	}
 }
 
-func TestTrimNullByteInOther(t *testing.T) {
+func TestTrimInOther(t *testing.T) {
 	t.Parallel()
 
 	cases := map[string]struct {
@@ -169,7 +169,7 @@ func TestTrimNullByteInOther(t *testing.T) {
 		t.Run(name, func(t *testing.T) {
 			t.Parallel()
 
-			got, gotOK := nullbyte.TrimNullByte(tt.in)
+			got, gotOK := nullbyte.Trim(tt.in)
 			if tt.want != got || tt.wantOK != gotOK {
 				t.Errorf("in=%s, want=%t, wantOK=%t, got=%t, gotOK=%t", tt.in, tt.want, tt.wantOK, got, gotOK)
 			}
@@ -177,7 +177,7 @@ func TestTrimNullByteInOther(t *testing.T) {
 	}
 }
 
-func TestRemoveNullByteFromStr(t *testing.T) {
+func TestRemoveAllFromStr(t *testing.T) {
 	t.Parallel()
 
 	cases := map[string]struct {
@@ -196,7 +196,7 @@ func TestRemoveNullByteFromStr(t *testing.T) {
 		t.Run(name, func(t *testing.T) {
 			t.Parallel()
 
-			got, gotOK := nullbyte.RemoveNullByte(tt.in)
+			got, gotOK := nullbyte.RemoveAll(tt.in)
 			if tt.want != got || tt.wantOK != gotOK {
 				t.Errorf("in=%s, want=%s, wantOK=%t, got=%s, gotOK=%t", tt.in, tt.want, tt.wantOK, got, gotOK)
 			}
@@ -204,7 +204,7 @@ func TestRemoveNullByteFromStr(t *testing.T) {
 	}
 }
 
-func TestRemoveNullByteFromBytes(t *testing.T) {
+func TestRemoveAllFromByte(t *testing.T) {
 	t.Parallel()
 
 	cases := map[string]struct {
@@ -223,7 +223,7 @@ func TestRemoveNullByteFromBytes(t *testing.T) {
 		t.Run(name, func(t *testing.T) {
 			t.Parallel()
 
-			got, gotOK := nullbyte.RemoveNullByte(tt.in)
+			got, gotOK := nullbyte.RemoveAll(tt.in)
 			if !cmp.Equal(tt.want, got) || tt.wantOK != gotOK {
 				t.Errorf("in=%v, want=%v, wantOK=%t, got=%v, gotOK=%t", tt.in, tt.want, tt.wantOK, got, gotOK)
 			}
@@ -231,7 +231,7 @@ func TestRemoveNullByteFromBytes(t *testing.T) {
 	}
 }
 
-func TestRemoveNullByteInOther(t *testing.T) {
+func TestRemoveAllInOther(t *testing.T) {
 	t.Parallel()
 
 	cases := map[string]struct {
@@ -250,7 +250,7 @@ func TestRemoveNullByteInOther(t *testing.T) {
 		t.Run(name, func(t *testing.T) {
 			t.Parallel()
 
-			got, gotOK := nullbyte.RemoveNullByte(tt.in)
+			got, gotOK := nullbyte.RemoveAll(tt.in)
 			if tt.want != got || tt.wantOK != gotOK {
 				t.Errorf("in=%s, want=%t, wantOK=%t, got=%t, gotOK=%t", tt.in, tt.want, tt.wantOK, got, gotOK)
 			}
