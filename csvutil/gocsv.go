@@ -5,7 +5,7 @@ import (
 	"os"
 	"path"
 
-	"github.com/exaream/go-snippet/fileutil"
+	"github.com/exaream/go-lib/fileutil"
 	"github.com/gocarina/gocsv"
 )
 

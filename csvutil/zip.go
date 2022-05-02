@@ -4,7 +4,7 @@ import (
 	"archive/zip"
 	"fmt"
 
-	"github.com/exaream/go-snippet/fileutil"
+	"github.com/exaream/go-lib/fileutil"
 )
 
 const zipExt = ".zip"

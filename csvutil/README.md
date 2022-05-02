@@ -2,20 +2,20 @@
 
 ## Install
 ```shell
-$ git clone https://github.com/exaream/go-snippet.git
-$ cd go-snippet/csvutil
+$ git clone https://github.com/exaream/go-lib.git
+$ cd go-lib/csvutil
 $ curl https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/47okinaw.zip -o testdata/47okinaw.zip
 $ unzip testdata/47okinaw.zip -d testdata
 ```
 
 ## Run
 ```shell
-$ cd go-snippet/csvutil/cmd/csv
+$ cd go-lib/csvutil/cmd/csv
 $ go run main.go
 ```
 
 ```shell
-$ cd go-snippet/csvutil/cmd/zip
+$ cd go-lib/csvutil/cmd/zip
 $ go run main.go
 ```
 

@@ -1,9 +1,0 @@
-go 1.18
-
-use (
-	./csvutil
-	./fileutil
-	./fuzz
-	./nullbyte
-	./sample
-)
