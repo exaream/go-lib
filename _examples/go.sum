@@ -1,0 +1,5 @@
+github.com/exaream/go-lib v0.0.0-20220502045951-fa537c208268 h1:COeoGfJb99r9i47MVcZlSjg0qr4sIaSnohpj1CqQr4Q=
+github.com/exaream/go-lib v0.0.0-20220502045951-fa537c208268/go.mod h1:4ol8Jz+tVS1lKIOzKoczuc0rqL9dTpt71fW9pyvckk0=
+github.com/google/go-cmp v0.5.8 h1:e6P7q2lk1O+qJJb4BtCQXlK8vWEO8V1ZeuEdJNOqZyg=
+golang.org/x/exp v0.0.0-20220428152302-39d4317da171 h1:TfdoLivD44QwvssI9Sv1xwa5DcL5XQr4au4sZ2F2NV4=
+golang.org/x/exp v0.0.0-20220428152302-39d4317da171/go.mod h1:lgLbSvA5ygNOMpwM/9anMpWVlVJ7Z+cHWq/eFuinpGE=
