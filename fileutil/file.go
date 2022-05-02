@@ -21,7 +21,6 @@ func Ext(file string) string {
 
 // Stem returns a stem that is a file name without the extension.
 func Stem(file string) string {
-	base := filepath.Base(file)
-	ext := filepath.Ext(base)
-	return strings.TrimRight(base, ext) // or base[:len(base)-len(ext)]
+	// or base[:len(base)-len(ext)]
+	return strings.TrimRight(filepath.Base(file), filepath.Ext(file))
 }
