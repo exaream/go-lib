@@ -9,8 +9,7 @@ import (
 
 // MimeType returns Mime type by a file name.
 func MimeType(file string) string {
-	ext := filepath.Ext(file)
-	return MimeTypeByExt(ext)
+	return MimeTypeByExt(filepath.Ext(file))
 }
 
 // MimeTypeByExt returns Mime type by an extension.
