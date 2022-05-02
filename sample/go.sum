@@ -1,8 +1,0 @@
-github.com/exaream/go-snippet/csvutil v0.0.0-20220424074142-f4467b9ba4c3 h1:JiE7nY7a8gRKT6u+fIYfMYA+te+C2dzTPYwngtRv3hw=
-github.com/exaream/go-snippet/csvutil v0.0.0-20220424074142-f4467b9ba4c3/go.mod h1:R0tTMc6q+w++8yQ4i1693UElkRr7iD869BEpIhsHEYE=
-github.com/exaream/go-snippet/fileutil v0.0.0-20220424074142-f4467b9ba4c3 h1:mHDLS9ZMFEuhi+oeoptNtcQ0PfPO4L2FLKYWBIcxO/k=
-github.com/exaream/go-snippet/fileutil v0.0.0-20220424074142-f4467b9ba4c3/go.mod h1:7LUOByRs3jSBvuha1DVC711n9OIaRqE/icVyzWYAAtU=
-github.com/gocarina/gocsv v0.0.0-20220422102445-f48ffd81e276 h1:itXwG7hIwd5UCoI4R0YsqkcjoI6Wg/m/kLhfJLLdQ/I=
-github.com/gocarina/gocsv v0.0.0-20220422102445-f48ffd81e276/go.mod h1:5YoVOkjYAQumqlV356Hj3xeYh4BdZuLE0/nRkf2NKkI=
-golang.org/x/text v0.3.7 h1:olpwvP2KacW1ZWvsR7uQhoyTYvKAupfQrRGBFM352Gk=
-golang.org/x/text v0.3.7/go.mod h1:u+2+/6zg+i71rQMx5EYifcz6MCKuco9NR6JIITiCfzQ=

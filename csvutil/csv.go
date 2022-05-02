@@ -8,7 +8,7 @@ import (
 	"os"
 	"path"
 
-	"github.com/exaream/go-snippet/fileutil"
+	"github.com/exaream/go-lib/fileutil"
 	"golang.org/x/text/encoding/japanese"
 	"golang.org/x/text/transform"
 )

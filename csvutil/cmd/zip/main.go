@@ -5,7 +5,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/exaream/go-snippet/csvutil"
+	"github.com/exaream/go-lib/csvutil"
 )
 
 func main() {
