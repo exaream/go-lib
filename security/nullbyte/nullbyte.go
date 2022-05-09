@@ -21,12 +21,12 @@ func Contains[T Sequence](a T) bool {
 	case []byte:
 		return slices.Contains(v, 0)
 	}
-	// We do not pass this.
+	// We do not pass here.
 	return false
 }
 
 // Trim returns a string or bytes that is trimmed null bytes.
-func Trim[T Sequence](a T) any {
+func Trim[T Sequence](a T) any { // TODO Confirm whether we can use T for the return value.
 	switch v := any(a).(type) {
 	case string:
 		return strings.Trim(v, nullByteStr)
