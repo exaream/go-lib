@@ -3,9 +3,8 @@ package nullbyte_test
 import (
 	"testing"
 
+	"github.com/exaream/go-lib/security/nullbyte"
 	"github.com/google/go-cmp/cmp"
-
-	"nullbyte"
 )
 
 const (
@@ -21,12 +20,11 @@ func TestContainsInStr(t *testing.T) {
 	cases := map[string]struct {
 		in string
 
-		want   bool
-		wantOK bool
+		want bool
 	}{
-		"null byte":    {before, true, true},
-		"no null byte": {noNullbyteStr, false, true},
-		"empty":        {"", false, true},
+		"null byte":    {before, true},
+		"no null byte": {noNullbyteStr, false},
+		"empty":        {"", false},
 	}
 
 	for name, tt := range cases {
@@ -34,9 +32,9 @@ func TestContainsInStr(t *testing.T) {
 		t.Run(name, func(t *testing.T) {
 			t.Parallel()
 
-			got, gotOK := nullbyte.Contains(tt.in)
-			if tt.want != got || tt.wantOK != gotOK {
-				t.Errorf("in=%s, want=%t, wantOK=%t, got=%t, gotOK=%t", tt.in, tt.want, tt.wantOK, got, gotOK)
+			got := nullbyte.Contains(tt.in)
+			if tt.want != got {
+				t.Errorf("in=%s, want=%t, got=%t", tt.in, tt.want, got)
 			}
 		})
 	}
@@ -48,12 +46,11 @@ func TestContainsInByte(t *testing.T) {
 	cases := map[string]struct {
 		in []byte
 
-		want   bool
-		wantOK bool
+		want bool
 	}{
-		"null byte":    {[]byte(before), true, true},
-		"no null byte": {[]byte(noNullbyteStr), false, true},
-		"empty":        {[]byte(""), false, true},
+		"null byte":    {[]byte(before), true},
+		"no null byte": {[]byte(noNullbyteStr), false},
+		"empty":        {[]byte(""), false},
 	}
 
 	for name, tt := range cases {
@@ -61,36 +58,9 @@ func TestContainsInByte(t *testing.T) {
 		t.Run(name, func(t *testing.T) {
 			t.Parallel()
 
-			got, gotOK := nullbyte.Contains(tt.in)
-			if tt.want != got || tt.wantOK != gotOK {
-				t.Errorf("in=%s, want=%t, wantOK=%t, got=%t, gotOK=%t", tt.in, tt.want, tt.wantOK, got, gotOK)
-			}
-		})
-	}
-}
-
-func TestContainsInOther(t *testing.T) {
-	t.Parallel()
-
-	cases := map[string]struct {
-		in any
-
-		want   bool
-		wantOK bool
-	}{
-		"bool":  {true, false, false},
-		"int":   {1, false, false},
-		"float": {0.1, false, false},
-	}
-
-	for name, tt := range cases {
-		tt := tt
-		t.Run(name, func(t *testing.T) {
-			t.Parallel()
-
-			got, gotOK := nullbyte.Contains(tt.in)
-			if tt.want != got || tt.wantOK != gotOK {
-				t.Errorf("in=%s, want=%t, wantOK=%t, got=%t, gotOK=%t", tt.in, tt.want, tt.wantOK, got, gotOK)
+			got := nullbyte.Contains(tt.in)
+			if tt.want != got {
+				t.Errorf("in=%s, want=%t, got=%t", tt.in, tt.want, got)
 			}
 		})
 	}
@@ -102,12 +72,11 @@ func TestTrimFromStr(t *testing.T) {
 	cases := map[string]struct {
 		in string
 
-		want   string
-		wantOK bool
+		want string
 	}{
-		"null byte":    {before, afterTrim, true},
-		"no null byte": {noNullbyteStr, noNullbyteStr, true},
-		"empty":        {"", "", true},
+		"null byte":    {before, afterTrim},
+		"no null byte": {noNullbyteStr, noNullbyteStr},
+		"empty":        {"", ""},
 	}
 
 	for name, tt := range cases {
@@ -115,9 +84,9 @@ func TestTrimFromStr(t *testing.T) {
 		t.Run(name, func(t *testing.T) {
 			t.Parallel()
 
-			got, gotOK := nullbyte.Trim(tt.in)
-			if tt.want != got || tt.wantOK != gotOK {
-				t.Errorf("in=%s, want=%s, wantOK=%t, got=%s, gotOK=%t", tt.in, tt.want, tt.wantOK, got, gotOK)
+			got := nullbyte.Trim(tt.in)
+			if tt.want != got {
+				t.Errorf("in=%s, want=%s, got=%s", tt.in, tt.want, got)
 			}
 		})
 	}
@@ -129,12 +98,11 @@ func TestTrimFromByte(t *testing.T) {
 	cases := map[string]struct {
 		in []byte
 
-		want   []byte
-		wantOK bool
+		want []byte
 	}{
-		"null byte":    {[]byte(before), []byte(afterTrim), true},
-		"no null byte": {[]byte(noNullbyteStr), []byte(noNullbyteStr), true},
-		"empty":        {[]byte(""), []byte(""), true},
+		"null byte":    {[]byte(before), []byte(afterTrim)},
+		"no null byte": {[]byte(noNullbyteStr), []byte(noNullbyteStr)},
+		"empty":        {[]byte(""), []byte("")},
 	}
 
 	for name, tt := range cases {
@@ -142,36 +110,9 @@ func TestTrimFromByte(t *testing.T) {
 		t.Run(name, func(t *testing.T) {
 			t.Parallel()
 
-			got, gotOK := nullbyte.Trim(tt.in)
-			if !cmp.Equal(tt.want, got) || tt.wantOK != gotOK {
-				t.Errorf("in=%v, want=%v, wantOK=%t, got=%v, gotOK=%t", tt.in, tt.want, tt.wantOK, got, gotOK)
-			}
-		})
-	}
-}
-
-func TestTrimInOther(t *testing.T) {
-	t.Parallel()
-
-	cases := map[string]struct {
-		in any
-
-		want   any
-		wantOK bool
-	}{
-		"bool":  {true, true, false},
-		"int":   {1, 1, false},
-		"float": {0.1, 0.1, false},
-	}
-
-	for name, tt := range cases {
-		tt := tt
-		t.Run(name, func(t *testing.T) {
-			t.Parallel()
-
-			got, gotOK := nullbyte.Trim(tt.in)
-			if tt.want != got || tt.wantOK != gotOK {
-				t.Errorf("in=%s, want=%t, wantOK=%t, got=%t, gotOK=%t", tt.in, tt.want, tt.wantOK, got, gotOK)
+			got := nullbyte.Trim(tt.in)
+			if !cmp.Equal(tt.want, got) {
+				t.Errorf("in=%v, want=%v, got=%v", tt.in, tt.want, got)
 			}
 		})
 	}
@@ -183,12 +124,11 @@ func TestRemoveAllFromStr(t *testing.T) {
 	cases := map[string]struct {
 		in string
 
-		want   string
-		wantOK bool
+		want string
 	}{
-		"null byte":    {before, noNullbyteStr, true},
-		"no null byte": {noNullbyteStr, noNullbyteStr, true},
-		"empty":        {"", "", true},
+		"null byte":    {before, noNullbyteStr},
+		"no null byte": {noNullbyteStr, noNullbyteStr},
+		"empty":        {"", ""},
 	}
 
 	for name, tt := range cases {
@@ -196,9 +136,9 @@ func TestRemoveAllFromStr(t *testing.T) {
 		t.Run(name, func(t *testing.T) {
 			t.Parallel()
 
-			got, gotOK := nullbyte.RemoveAll(tt.in)
-			if tt.want != got || tt.wantOK != gotOK {
-				t.Errorf("in=%s, want=%s, wantOK=%t, got=%s, gotOK=%t", tt.in, tt.want, tt.wantOK, got, gotOK)
+			got := nullbyte.RemoveAll(tt.in)
+			if tt.want != got {
+				t.Errorf("in=%s, want=%s, got=%s", tt.in, tt.want, got)
 			}
 		})
 	}
@@ -210,12 +150,11 @@ func TestRemoveAllFromByte(t *testing.T) {
 	cases := map[string]struct {
 		in []byte
 
-		want   []byte
-		wantOK bool
+		want []byte
 	}{
-		"null byte":    {[]byte(before), []byte(noNullbyteStr), true},
-		"no null byte": {[]byte(noNullbyteStr), []byte(noNullbyteStr), true},
-		"empty":        {[]byte(""), nil, true}, // TODO Confirm why want is nil
+		"null byte":    {[]byte(before), []byte(noNullbyteStr)},
+		"no null byte": {[]byte(noNullbyteStr), []byte(noNullbyteStr)},
+		"empty":        {[]byte(""), nil},
 	}
 
 	for name, tt := range cases {
@@ -223,36 +162,9 @@ func TestRemoveAllFromByte(t *testing.T) {
 		t.Run(name, func(t *testing.T) {
 			t.Parallel()
 
-			got, gotOK := nullbyte.RemoveAll(tt.in)
-			if !cmp.Equal(tt.want, got) || tt.wantOK != gotOK {
-				t.Errorf("in=%v, want=%v, wantOK=%t, got=%v, gotOK=%t", tt.in, tt.want, tt.wantOK, got, gotOK)
-			}
-		})
-	}
-}
-
-func TestRemoveAllInOther(t *testing.T) {
-	t.Parallel()
-
-	cases := map[string]struct {
-		in any
-
-		want   any
-		wantOK bool
-	}{
-		"bool":  {true, true, false},
-		"int":   {1, 1, false},
-		"float": {0.1, 0.1, false},
-	}
-
-	for name, tt := range cases {
-		tt := tt
-		t.Run(name, func(t *testing.T) {
-			t.Parallel()
-
-			got, gotOK := nullbyte.RemoveAll(tt.in)
-			if tt.want != got || tt.wantOK != gotOK {
-				t.Errorf("in=%s, want=%t, wantOK=%t, got=%t, gotOK=%t", tt.in, tt.want, tt.wantOK, got, gotOK)
+			got := nullbyte.RemoveAll(tt.in)
+			if !cmp.Equal(tt.want, got) {
+				t.Errorf("in=%v, want=%v, got=%v", tt.in, tt.want, got)
 			}
 		})
 	}
