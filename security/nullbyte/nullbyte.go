@@ -9,35 +9,40 @@ import (
 
 const nullByteStr = string(rune(0)) // "\x00"
 
+type Sequence interface {
+	string | []byte
+}
+
 // Contains reports whether null byte is within a.
-func Contains(a any) (result bool, ok bool) {
-	switch v := a.(type) {
+func Contains[T Sequence](a T) bool {
+	switch v := any(a).(type) {
 	case string:
-		return strings.Contains(v, nullByteStr), true
+		return strings.Contains(v, nullByteStr)
 	case []byte:
-		return slices.Contains(v, 0), true
+		return slices.Contains(v, 0)
 	}
-	return false, false
+	// We do not pass this.
+	return false
 }
 
 // Trim returns a string or bytes that is trimmed null bytes.
-func Trim(a any) (result any, ok bool) {
-	switch v := a.(type) {
+func Trim[T Sequence](a T) any {
+	switch v := any(a).(type) {
 	case string:
-		return strings.Trim(v, nullByteStr), true
+		return strings.Trim(v, nullByteStr)
 	case []byte:
-		return bytes.Trim(v, nullByteStr), true
+		return bytes.Trim(v, nullByteStr)
 	}
-	return a, false
+	return a
 }
 
 // RemoveAll returns a string or bytes that is removed null bytes.
-func RemoveAll(a any) (result any, ok bool) {
-	switch v := a.(type) {
+func RemoveAll[T Sequence](a T) any {
+	switch v := any(a).(type) {
 	case string:
-		return strings.ReplaceAll(v, nullByteStr, ""), true
+		return strings.ReplaceAll(v, nullByteStr, "")
 	case []byte:
-		return bytes.ReplaceAll(v, []byte(nullByteStr), []byte("")), true
+		return bytes.ReplaceAll(v, []byte(nullByteStr), []byte(""))
 	}
-	return a, false
+	return a
 }
