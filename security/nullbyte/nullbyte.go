@@ -26,23 +26,23 @@ func Contains[T Sequence](a T) bool {
 }
 
 // Trim returns a string or bytes that is trimmed null bytes.
-func Trim[T Sequence](a T) any { // TODO Confirm whether we can use T for the return value.
+func Trim[T Sequence](a T) T {
 	switch v := any(a).(type) {
 	case string:
-		return strings.Trim(v, nullByteStr)
+		return any(strings.Trim(v, nullByteStr)).(T)
 	case []byte:
-		return bytes.Trim(v, nullByteStr)
+		return any(bytes.Trim(v, nullByteStr)).(T)
 	}
 	return a
 }
 
 // RemoveAll returns a string or bytes that is removed null bytes.
-func RemoveAll[T Sequence](a T) any {
+func RemoveAll[T Sequence](a T) T {
 	switch v := any(a).(type) {
 	case string:
-		return strings.ReplaceAll(v, nullByteStr, "")
+		return any(strings.ReplaceAll(v, nullByteStr, "")).(T)
 	case []byte:
-		return bytes.ReplaceAll(v, []byte(nullByteStr), []byte(""))
+		return any(bytes.ReplaceAll(v, []byte(nullByteStr), []byte(""))).(T)
 	}
 	return a
 }
