@@ -15,19 +15,22 @@ type Sequence interface {
 
 // Contains reports whether null byte is within a.
 func Contains[T Sequence](a T) bool {
+	// Use any() to do type assertion.
 	switch v := any(a).(type) {
 	case string:
 		return strings.Contains(v, nullByteStr)
 	case []byte:
 		return slices.Contains(v, 0)
 	}
-	// We do not pass here.
+	// We never pass through here.
 	return false
 }
 
 // Trim returns a string or bytes that is trimmed null bytes.
 func Trim[T Sequence](a T) T {
+	// Use any() to do type assertion.
 	switch v := any(a).(type) {
+	// Do type assertion again to return as T.
 	case string:
 		return any(strings.Trim(v, nullByteStr)).(T)
 	case []byte:
@@ -38,7 +41,9 @@ func Trim[T Sequence](a T) T {
 
 // RemoveAll returns a string or bytes that is removed null bytes.
 func RemoveAll[T Sequence](a T) T {
+	// Use any() to do type assertion.
 	switch v := any(a).(type) {
+	// Do type assertion again to return as T.
 	case string:
 		return any(strings.ReplaceAll(v, nullByteStr, "")).(T)
 	case []byte:
