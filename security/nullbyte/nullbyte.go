@@ -9,6 +9,7 @@ import (
 
 const nullByteStr = string(rune(0)) // "\x00"
 
+// Interface of arguments and return values of functions.
 type Sequence interface {
 	string | []byte
 }
@@ -22,7 +23,7 @@ func Contains[T Sequence](a T) bool {
 	case []byte:
 		return slices.Contains(v, 0)
 	}
-	// We never pass through here.
+	// We never pass through here..
 	return false
 }
 
